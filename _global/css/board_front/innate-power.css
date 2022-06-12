@@ -297,7 +297,7 @@ div.description {
 
 .description icon.sun, .description icon.earth, .description icon.plant, 
 .description icon.fire, .description icon.air, .description icon.moon, 
-.description icon.animal, .description icon.water {
+.description icon.animal, .description icon.water, .description icon.any {
     width: 45px;
     height: 30px;
     margin-left: -9px;
