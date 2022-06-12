@@ -19,8 +19,10 @@
 }
 
 @font-face{
-  font-family: 'Name Headings';
-  src: local('DK Snemand'), url(../fonts/Mouse_Memoirs/MouseMemoirs-Regular.ttf);
+  font-family: "Name Headings";
+  src: url(../fonts/DKSnemand/DK-Snemand.otf),
+	   url(../fonts/Mouse_Memoirs/MouseMemoirs-Regular.ttf),
+	   local('DK Snemand');
 }
 
 @font-face{
