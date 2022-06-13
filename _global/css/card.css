@@ -311,15 +311,17 @@ threshold{
 }
 
 threshold.threshold-custom::before{
-	content: attr(data-before);
-	  font-family: 'DK Snemand', 'Mouse Memoirs';
-  text-transform: uppercase;
-  letter-spacing: 1px;
-      color: #431E0AFF;
-  position: relative;
-  right: 0%;
-	top: -22px;
+   content: attr(data-before);
+   font-family: 'DK Snemand', 'Mouse Memoirs';
+   text-transform: uppercase;
+   letter-spacing: 1px;
+   color: #431E0AFF;
+   position: relative;
+   right: 0%;
+   top: -22px;
    margin-bottom: -18px;
+   font-size: 16px;
+   line-height: 18px;
 }
 
 threshold-condition{
