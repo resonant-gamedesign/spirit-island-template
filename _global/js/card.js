@@ -123,12 +123,15 @@ function setThreshold(card)
 	  }
 	  
 	//set elemental thresholds
-    threshold.innerHTML = `
-    <threshold-condition>
-      ${getThresholdElements(threshold)}:
-    </threshold-condition>
-    ${threshold.innerHTML}
-    `;
+	var conditions = threshold.getAttribute('condition');
+	if(conditions){
+		threshold.innerHTML = `
+		<threshold-condition>
+		  ${getThresholdElements(threshold)}:
+		</threshold-condition>
+		${threshold.innerHTML}
+		`;
+	}
   }
 }
 
@@ -137,21 +140,23 @@ function getThresholdElements(threshold)
   var result = '';
 
   var conditions = threshold.getAttribute('condition');
-  var condition = conditions.split(',');
-  for (let i = 0; i < condition.length; i++){
-    var number = condition[i].split('-')[0];
-    var element = condition[i].split('-')[1];
-	result += `${number}<icon class="${element}"></icon>`;
-	if (i < condition.length-1){
-		result += "<div style='width:10px; height:1px; display:inline-block'></div>"
-	}
+  if(conditions){
+	  var condition = conditions.split(',');
+	  for (let i = 0; i < condition.length; i++){
+		var number = condition[i].split('-')[0];
+		var element = condition[i].split('-')[1];
+		result += `${number}<icon class="${element}"></icon>`;
+		if (i < condition.length-1){
+			result += "<div style='width:10px; height:1px; display:inline-block'></div>"
+		}
+	  }
+	  /* for(var condition of conditions.split(','))
+	  {
+		var number = condition.split('-')[0];
+		var element = condition.split('-')[1];
+		result += `${number}<icon class="${element}"></icon>`;
+	  } */
   }
-  /* for(var condition of conditions.split(','))
-  {
-    var number = condition.split('-')[0];
-    var element = condition.split('-')[1];
-    result += `${number}<icon class="${element}"></icon>`;
-  } */
 
   return result;
 }
