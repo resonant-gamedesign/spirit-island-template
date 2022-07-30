@@ -1047,11 +1047,11 @@ function enhancePresenceTracksTable() {
 	console.log("BUILDING PRESENCE TRACK PANEL")
 	const board = document.querySelectorAll('board')[0];
     var elmt = board.getElementsByTagName("presence-tracks")[0];
-    var title = board.createElement("section-title");
+    var title = document.createElement("section-title");
     title.innerHTML = "Presence";    
     elmt.insertBefore(title, elmt.firstChild); 
     console.log('creating dynamic presence tracks...')
-    var table = board.getElementById("presence-table");
+    var table = document.getElementById("presence-table");
 	table.innerHTML = table.innerHTML.replaceAll('middle=""','rowspan="2" class="middle"')
 
     for (var i = 0, row; row = table.rows[i]; i++) {
@@ -1063,7 +1063,7 @@ function enhancePresenceTracksTable() {
 	// Add spacing row to the front of the table
 	var firstRow = table.getElementsByTagName("tr")[0];
 	var firstCell = firstRow.getElementsByTagName("td")[0];
-	var spacerRow = board.createElement("td");
+	var spacerRow = document.createElement("td");
 	spacerRow.style.width = "10px";
 	spacerRow.rowSpan = "2";
 	firstRow.insertBefore(spacerRow,firstCell);
@@ -1071,7 +1071,6 @@ function enhancePresenceTracksTable() {
 
 function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
     var result = '';
-
     //Find values between parenthesis
     var regExp = /\(([^)]+)\)/;    
 
@@ -1079,8 +1078,8 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
 	
     // Every node will have a presence-node element with
     // a ring-icon element inside, so we can add these now.
-    presenceNode = board.createElement("presence-node");    
-    ring = board.createElement("ring-icon");
+    presenceNode = document.createElement("presence-node");    
+    ring = document.createElement("ring-icon");
     presenceNode.appendChild(ring);
     // Will be populated with the sub text that will be added at the end
     var subText = '';
@@ -1510,11 +1509,13 @@ function dynamicCellWidth() {
 			newInnerHTML+=growthGroups[i]
 		}
 		growthTable.innerHTML=newInnerHTML
-		var newGrowthTable = board.createElement("growth-table");
-		var growthLine = board.createElement("growth-row-line");
+		var newGrowthTable = document.createElement("growth-table");
+		var growthLine = document.createElement("growth-row-line");
 		newGrowthTable.innerHTML=lastGrowth;
-		board.getElementsByTagName("growth")[0].append(growthLine)
-		board.getElementsByTagName("growth")[0].append(newGrowthTable)
+		document.getElementsByTagName("growth")[0].append(growthLine)
+		console.log("HERE IS THE GROWTH TABLE")
+		console.log(newGrowthTable)
+		document.getElementsByTagName("growth")[0].append(newGrowthTable)
 	}
 	
 	//Iterate through growth table(s) to resize
@@ -1636,7 +1637,7 @@ function dynamicCellWidth() {
     }
 
 	// Balance Growth Text
-	maxGrowthTextHeight = newGrowthTable!=undefined ? 50 : 100;
+	maxGrowthTextHeight = newGrowthTable!==undefined ? 50 : 100;
 	for(i = 0; i < growthTexts.length; i++){
 		if(growthTexts[i].offsetHeight<50){
 			console.log('balancing lines: ')
@@ -1745,7 +1746,7 @@ function dynamicCellWidth() {
 	height_adjust += row_max_height;
 	subtext[0].style.height = first_row_max+2+"px"
 	subtext[firstCardPlayIndex].style.height = row_max_height+2+"px"
-	var presence_table = board.getElementById("presence-table");
+	var presence_table = document.getElementById("presence-table");
 	presence_table.style.height = (presence_table.offsetHeight + height_adjust)+"px";
     
 	// Place middle presence nodes
@@ -1774,16 +1775,18 @@ function dynamicCellWidth() {
 		tallest = 0;
 		tallest_index = 0;
 		for(i = 0; i < descriptionContainers.length; i++){
-			console.log('client height = '+descriptionContainers[i].clientHeight)
 			if(descriptionContainers[i].clientHeight > tallest){
 				tallest = descriptionContainers[i].clientHeight;
 				tallest_index = i
 			}
 		}
-		console.log('tallest is: ' + tallest_index)
-		while(checkOverflowHeight(innatePowerBox)){
-			noteBox = descriptionContainers[tallest_index].getElementsByTagName("note")[0]
-			if(noteBox){
+		console.log('tallest is Innate Power: ' + (tallest_index+1))
+		
+		//check for note in tallest innate power
+		noteBox = descriptionContainers[tallest_index].getElementsByTagName("note")[0];
+		if(noteBox){
+			console.log('notebox detected, attempting to shrink')
+			while(checkOverflowHeight(innatePowerBox)){
 				var style = window.getComputedStyle(noteBox, null).getPropertyValue('font-size');
 				var fontSize = parseFloat(style);
 				noteBox.style.fontSize = (fontSize - 1) + 'px';
@@ -1791,13 +1794,16 @@ function dynamicCellWidth() {
 				var lineHeight = parseFloat(line);
 				noteBox.style.lineHeight = (lineHeight - 1) + 'px';
 				// safety valve
-				j += 1
-				if (j>10){ 
+				k += 1
+				if (k>10){ 
 					console.log('Notes shrunk as far as reasonable')
 					break;
 				}
 			}
+		}else{
+			console.log('notebox not detected in tallest element')
 		}
+		
 	}
 }
 
