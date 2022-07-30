@@ -46,7 +46,7 @@ function dynamicSpecialRuleHeight(board){
 function addImages(board) {
 
     const spiritImage = board.getAttribute('spirit-image');
-	const artistCredit = document.getElementsByTagName('artist-name');
+	const artistCredit = board.getElementsByTagName('artist-name');
     const spiritBorder = board.getAttribute('spirit-border');
     
     const imageSize = board.getAttribute('spirit-image-scale');
@@ -77,7 +77,7 @@ function addImages(board) {
     }
 	
 	//Add Meeple
-	const spiritName = document.getElementsByTagName('spirit-name');
+	const spiritName = board.getElementsByTagName('spirit-name');
 	spiritName[0].outerHTML += "<custom-meeple></custom-meeple>";
 	
 }
@@ -85,7 +85,8 @@ function addImages(board) {
 function parseGrowthTags(){
     console.log("BUILDING GROWTH PANEL")
 	var fullHTML = "";
-    var growthHTML = document.getElementsByTagName("growth");
+	const board = document.querySelectorAll('board')[0];
+    var growthHTML = board.getElementsByTagName("growth");
     
     var growthTitle = "<section-title>"+growthHTML[0].title+"</section-title>";
 
@@ -141,8 +142,8 @@ function parseGrowthTags(){
     }
     fullHTML += growthTitle + subTitle + newGrowthTableTagOpen + newGrowthCellHTML + newGrowthTableTagClose
 
-    document.getElementsByTagName("growth")[0].removeAttribute("title");
-    document.getElementsByTagName("growth")[0].innerHTML = fullHTML;
+    board.getElementsByTagName("growth")[0].removeAttribute("title");
+    board.getElementsByTagName("growth")[0].innerHTML = fullHTML;
 
     function writeGrowthNode(childElement, nextElement, headerIndex) {
         const cost = childElement.getAttribute("cost");
@@ -961,11 +962,12 @@ function parseGrowthTags(){
 
 function parseEnergyTrackTags(){
     
-    var energyValues = document.getElementsByTagName("energy-track")[0].getAttribute("values");
+	const board = document.querySelectorAll('board')[0];
+    var energyValues = board.getElementsByTagName("energy-track")[0].getAttribute("values");
     var energyOptions = energyValues.split(",");
 
-    var energyBanner = document.getElementsByTagName("energy-track")[0].getAttribute("banner");
-    var energyBannerScale = document.getElementsByTagName("energy-track")[0].getAttribute("banner-v-scale");
+    var energyBanner = board.getElementsByTagName("energy-track")[0].getAttribute("banner");
+    var energyBannerScale = board.getElementsByTagName("energy-track")[0].getAttribute("banner-v-scale");
 	if(!energyBannerScale){
         energyBannerScale = "100"
     }
@@ -999,17 +1001,18 @@ function parseEnergyTrackTags(){
         energyHTML += "<td"+isMiddle+">"+getPresenceNodeHtml(nodeText, i == 0, "energy", true)+"</td>";
     }
     energyHTML += "</tr>"
-    document.getElementsByTagName("energy-track")[0].removeAttribute("values");
+    board.getElementsByTagName("energy-track")[0].removeAttribute("values");
     return energyHTML;
     
 }
 
 function parseCardPlayTrackTags(){    
     
-    var cardPlayValues = document.getElementsByTagName("card-play-track")[0].getAttribute("values");
+	const board = document.querySelectorAll('board')[0];
+    var cardPlayValues = board.getElementsByTagName("card-play-track")[0].getAttribute("values");
     var cardPlayOptions = cardPlayValues.split(",");
-    var cardPlayBanner = document.getElementsByTagName("card-play-track")[0].getAttribute("banner");
-    var cardPlayBannerScale = document.getElementsByTagName("card-play-track")[0].getAttribute("banner-v-scale");
+    var cardPlayBanner = board.getElementsByTagName("card-play-track")[0].getAttribute("banner");
+    var cardPlayBannerScale = board.getElementsByTagName("card-play-track")[0].getAttribute("banner-v-scale");
     if(!cardPlayBannerScale){
         cardPlayBannerScale = "100"
     }
@@ -1036,18 +1039,19 @@ function parseCardPlayTrackTags(){
         cardPlayHTML += "<td>"+getPresenceNodeHtml(cardPlayOptions[i], i == 0, "card", false)+"</td>";
     }
     cardPlayHTML += "</tr>"    
-    document.getElementsByTagName("card-play-track")[0].removeAttribute("values");
+    board.getElementsByTagName("card-play-track")[0].removeAttribute("values");
     return cardPlayHTML;    
 }
 
 function enhancePresenceTracksTable() {
 	console.log("BUILDING PRESENCE TRACK PANEL")
-    var elmt = document.getElementsByTagName("presence-tracks")[0];
-    var title = document.createElement("section-title");
+	const board = document.querySelectorAll('board')[0];
+    var elmt = board.getElementsByTagName("presence-tracks")[0];
+    var title = board.createElement("section-title");
     title.innerHTML = "Presence";    
     elmt.insertBefore(title, elmt.firstChild); 
     console.log('creating dynamic presence tracks...')
-    var table = document.getElementById("presence-table");
+    var table = board.getElementById("presence-table");
 	table.innerHTML = table.innerHTML.replaceAll('middle=""','rowspan="2" class="middle"')
 
     for (var i = 0, row; row = table.rows[i]; i++) {
@@ -1059,7 +1063,7 @@ function enhancePresenceTracksTable() {
 	// Add spacing row to the front of the table
 	var firstRow = table.getElementsByTagName("tr")[0];
 	var firstCell = firstRow.getElementsByTagName("td")[0];
-	var spacerRow = document.createElement("td");
+	var spacerRow = board.createElement("td");
 	spacerRow.style.width = "10px";
 	spacerRow.rowSpan = "2";
 	firstRow.insertBefore(spacerRow,firstCell);
@@ -1075,8 +1079,8 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
 	
     // Every node will have a presence-node element with
     // a ring-icon element inside, so we can add these now.
-    presenceNode = document.createElement("presence-node");    
-    ring = document.createElement("ring-icon");
+    presenceNode = board.createElement("presence-node");    
+    ring = board.createElement("ring-icon");
     presenceNode.appendChild(ring);
     // Will be populated with the sub text that will be added at the end
     var subText = '';
@@ -1464,31 +1468,33 @@ function Capitalise(str){
 
 function setNewEnergyCardPlayTracks(energyHTML, cardPlayHTML){
 	console.log("BUILDING PRESENCE TRACK PANEL")
-    document.getElementsByTagName("presence-tracks")[0].innerHTML = "<section-title>Presence</section-title>" +
+	const board = document.querySelectorAll('board')[0];
+    board.getElementsByTagName("presence-tracks")[0].innerHTML = "<section-title>Presence</section-title>" +
         "<table id='presence-table'>"+energyHTML + cardPlayHTML+"</table>";
 }
 
 function dynamicCellWidth() {
 	console.log("RESIZING: Growth")
-
+	const board = document.querySelectorAll('board')[0];
+	
 	// Growth Sizing
-    growthCells =  document.getElementsByTagName("growth-cell");
+    growthCells =  board.getElementsByTagName("growth-cell");
     growthCellCount = growthCells.length;
-    growthBorders = Array.from(document.getElementsByTagName("growth-border"));
+    growthBorders = Array.from(board.getElementsByTagName("growth-border"));
     growthBorderCount = growthBorders.length;
 
     let borderPixels = 0;
     for (const borderWidth of growthBorders.map(x => x.getAttribute('double') === undefined ? 7 : 11)) {
         borderPixels += borderWidth
     }
-    let growthTable = document.getElementsByTagName("growth-table")[0];
+    let growthTable = board.getElementsByTagName("growth-table")[0];
 	let totalWidth = 0;
     for (i = 0; i < growthCells.length; i++){
 		totalWidth += growthCells[i].offsetWidth;
     }
 
 	// Add additional Growth Row if necessary
-	let growthTexts = document.getElementsByTagName("growth-text");
+	let growthTexts = board.getElementsByTagName("growth-text");
 	let tallGrowthText = false
 	for(i = 0; i < growthTexts.length; i++){
 		tallGrowthText = growthTexts[i].offsetHeight > 95 ? true : tallGrowthText;
@@ -1504,17 +1510,17 @@ function dynamicCellWidth() {
 			newInnerHTML+=growthGroups[i]
 		}
 		growthTable.innerHTML=newInnerHTML
-		var newGrowthTable = document.createElement("growth-table");
-		var growthLine = document.createElement("growth-row-line");
+		var newGrowthTable = board.createElement("growth-table");
+		var growthLine = board.createElement("growth-row-line");
 		newGrowthTable.innerHTML=lastGrowth;
-		document.getElementsByTagName("growth")[0].append(growthLine)
-		document.getElementsByTagName("growth")[0].append(newGrowthTable)
+		board.getElementsByTagName("growth")[0].append(growthLine)
+		board.getElementsByTagName("growth")[0].append(newGrowthTable)
 	}
 	
 	//Iterate through growth table(s) to resize
 	const largeCellScale = 1.5;
 	const extraLargeCellScale = 1.8;
-	const growthTables = document.getElementsByTagName("growth-table");
+	const growthTables = board.getElementsByTagName("growth-table");
 	
 	let tightFlag = false; // flag for tightening presence tracks later
 	for (i = 0; i < growthTables.length; i++){
@@ -1524,7 +1530,7 @@ function dynamicCellWidth() {
 			tightFlag = true;
 			console.log('will tighten presence tracks')
 		}
-		const growthCells = document.getElementsByTagName("growth-table")[i].getElementsByTagName("growth-cell");
+		const growthCells = board.getElementsByTagName("growth-table")[i].getElementsByTagName("growth-cell");
 		const growthTableStyle = window.getComputedStyle(growthTable);
 		const growthTableWidth = growthTableStyle.getPropertyValue('width');
 		const remainingCellWidth = (parseInt(growthTableWidth.replace(/px/, "")) - borderPixels) + "px";
@@ -1570,12 +1576,12 @@ function dynamicCellWidth() {
 			totalWidth += growthCells[j].offsetWidth;
 		}
 		if(i>0){
-			growthLines = document.getElementsByTagName("growth-row-line");
+			growthLines = board.getElementsByTagName("growth-row-line");
 			growthLines[i-1].style.width = totalWidth+"px";
 		}
 	}
 	
-	growthTable = document.getElementsByTagName("growth-table")[0];
+	growthTable = board.getElementsByTagName("growth-table")[0];
     const headerWith = {}
     const headerAdditionalWidth = {}
     let maxIndex = undefined
@@ -1605,7 +1611,7 @@ function dynamicCellWidth() {
         }
     }
 
-    const subGrowthTitle = document.getElementsByTagName('sub-section-title')
+    const subGrowthTitle = board.getElementsByTagName('sub-section-title')
     let position = 0
     for (let i = 0; i < subGrowthTitle.length; i++) {
         subGrowthTitle[i].style.left = `${position}px`
@@ -1614,7 +1620,7 @@ function dynamicCellWidth() {
     }
 	
 	// Final resize (catches really big things that were missed)
-	let growthItems = document.getElementsByTagName("growth-cell");
+	let growthItems = board.getElementsByTagName("growth-cell");
 	for(i = 0; i < growthItems.length; i++){
 		if(checkOverflowWidth(growthItems[i])){
 			var children = growthItems[i].children;
@@ -1648,7 +1654,7 @@ function dynamicCellWidth() {
 	// Innate Power Sizing
 	console.log("RESIZING: Innate Powers")
 	// Innate Power Notes (scale font size)
-	noteBlocks = document.getElementsByTagName("note");
+	noteBlocks = board.getElementsByTagName("note");
 	for(let i = 0; i < noteBlocks.length; i++){
 		let noteHeight = noteBlocks[i].offsetHeight;
 		let j = 0
@@ -1665,7 +1671,7 @@ function dynamicCellWidth() {
 	}
 	
 	// Innate Power Thresholds
-    thresholds = document.getElementsByTagName("threshold");
+    thresholds = board.getElementsByTagName("threshold");
     thresholdsCount = thresholds.length;
     ICONWIDTH = 60;
 	let dynamicThresholdWidth = []
@@ -1683,7 +1689,7 @@ function dynamicCellWidth() {
     }
 	
 	// Innate Power Descriptions
-    var description = document.getElementsByClassName("description");
+    var description = board.getElementsByClassName("description");
     for(i = 0; i < description.length; i++){
         // Scale the text width to the threshold size...
 		description[i].style.paddingLeft = outerThresholdWidth[i]+"px";
@@ -1700,7 +1706,7 @@ function dynamicCellWidth() {
 
 	console.log("RESIZING: Presence Tracks")
     // Presence node subtext (for longer descriptions, allows flowing over into neighbors.
-    var presenceTrack = document.getElementsByTagName("presence-tracks")[0];
+    var presenceTrack = board.getElementsByTagName("presence-tracks")[0];
 	var subtext = presenceTrack.getElementsByTagName("subtext");
 	var presence_nodes = presenceTrack.getElementsByTagName("presence-node");
 	let adjustment_flag = 0
@@ -1739,7 +1745,7 @@ function dynamicCellWidth() {
 	height_adjust += row_max_height;
 	subtext[0].style.height = first_row_max+2+"px"
 	subtext[firstCardPlayIndex].style.height = row_max_height+2+"px"
-	var presence_table = document.getElementById("presence-table");
+	var presence_table = board.getElementById("presence-table");
 	presence_table.style.height = (presence_table.offsetHeight + height_adjust)+"px";
     
 	// Place middle presence nodes
@@ -1753,14 +1759,14 @@ function dynamicCellWidth() {
 	
 	console.log('CHECKING INNATE NOTES FOR SPACE IF NEEDED')
 	// Size Innate Power box
-	growth = document.getElementsByTagName("growth")[0];
-	presenceTracks = document.getElementsByTagName("presence-tracks")[0];
-	right = document.getElementsByTagName("right")[0];
-	innatePowers = document.getElementsByTagName("innate-powers")[0];
+	growth = board.getElementsByTagName("growth")[0];
+	presenceTracks = board.getElementsByTagName("presence-tracks")[0];
+	right = board.getElementsByTagName("right")[0];
+	innatePowers = board.getElementsByTagName("innate-powers")[0];
 	innatePowers.style.height = (right.clientHeight - presenceTracks.clientHeight - growth.clientHeight) + "px";
 	
 	// Shrink Innate Power notes if needed for space
-	var innatePowerBox = document.getElementsByTagName("innate-powers")[0];
+	var innatePowerBox = board.getElementsByTagName("innate-powers")[0];
 	let k = 0;
 	if(checkOverflowHeight(innatePowerBox)){
 		console.log('IP overflowing, shrinking notes (if applicable)...')
@@ -1860,17 +1866,20 @@ function checkOverflowHeight(el){
 }
 
 function parseInnatePowers(){
-    var fullHTML = "";
     
-    var innateHTML = document.getElementsByTagName("quick-innate-power");
+	console.log('PARSING INNATE POWERS')
+	const board = document.querySelectorAll('board')[0];
+	
+	var fullHTML = "";
+    var innateHTML = board.getElementsByTagName("quick-innate-power");
     
     for(i = 0; i < innateHTML.length; i++){
         fullHTML += parseInnatePower(innateHTML[i]);
     }
-    document.getElementsByTagName("innate-powers")[0].innerHTML = '<section-title>Innate Powers</section-title><innate-power-container>'+fullHTML+'</innate-power-container>';
+    board.getElementsByTagName("innate-powers")[0].innerHTML = '<section-title>Innate Powers</section-title><innate-power-container>'+fullHTML+'</innate-power-container>';
 	
 	//Enable custom spacing
-	var levelList = document.getElementsByClassName('description')
+	var levelList = board.getElementsByClassName('description')
 	
 	  for (let j = 0; j < levelList.length; j++) {
 		  ruleLines = levelList[j].innerHTML.split("\n")
@@ -2019,11 +2028,13 @@ function parseInnatePower(innatePowerHTML){
 }
 
 function parseSpecialRules(){
+	console.log('PARSING SPECIAL RULES')
+	const board = document.querySelectorAll('board')[0];
 	
-	var specialRules = document.getElementsByTagName("special-rules-container")[0];
+	var specialRules = board.getElementsByTagName("special-rules-container")[0];
 	
 	// Enable snake-like presence track in special rules
-    var specialTrack = document.getElementsByTagName("special-rules-track")[0];
+    var specialTrack = board.getElementsByTagName("special-rules-track")[0];
 	if(specialTrack){
 		var specialValues = specialTrack.getAttribute("values");
 		var specialOptions = specialValues.split(",");
@@ -2034,7 +2045,7 @@ function parseSpecialRules(){
 			specialHTML += "<td>"+getPresenceNodeHtml(nodeText, i == 0, "special", true)+"</td>";
 		}
 		specialHTML += "</tr>"
-		document.getElementsByTagName("special-rules-track")[0].removeAttribute("values");
+		board.getElementsByTagName("special-rules-track")[0].removeAttribute("values");
 		specialTrack.innerHTML = specialHTML;
 		var subtextList = specialTrack.getElementsByTagName("subtext");
 		for (var i = subtextList.length - 1; i >= 0; --i) {
