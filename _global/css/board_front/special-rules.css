@@ -237,4 +237,9 @@ special-rules-track icon.animal { background-image: url('../../images/board/Anim
 special-rules-track icon.star{ background-image: url('../../images/board/NewIcons/Element Star.png'); }
 special-rules-track icon.any { background-image: url('../../images/board/Any.png'); }
 
-
+special-rule icon.sun,special-rule icon.earth, special-rule icon.plant, special-rule icon.fire, 
+special-rule icon.air, special-rule icon.moon, special-rule icon.animal, special-rule icon.water,
+special-rule icon.any {
+  width: 65px;
+  height: 65px;
+}
