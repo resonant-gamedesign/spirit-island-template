@@ -7,7 +7,8 @@ window.onload = (event) =>{
 
 function startMain(){
     
-	parseGrowthTags();
+	console.log('CREATING SPIRIT BOARD')
+  parseGrowthTags();
     
 	if(document.getElementById("presence-table")) {
         enhancePresenceTracksTable();
@@ -23,13 +24,17 @@ function startMain(){
     var html = board.innerHTML;
     board.innerHTML = replaceIcon(html);
 	
-	setTimeout(() => {dynamicCellWidth()}, 200);
-	dynamicSpecialRuleHeight(board)
+	setTimeout(function() { 
+    dynamicCellWidth()
+    dynamicSpecialRuleHeight(board)
     addImages(board)
+  }, 200);
 
 }
 
 function dynamicSpecialRuleHeight(board){
+  var debug = true;
+  console.log('RESIZING: Special Rule')
     const specialRules = board.querySelectorAll('special-rules-container')[0]
     let height = specialRules.getAttribute('height')
 
@@ -41,6 +46,7 @@ function dynamicSpecialRuleHeight(board){
 
     const spiritName = board.querySelectorAll('spirit-name')[0]
     if(specialRules){
+      if(debug) console.log(`calc(100% - ${height})`)
         specialRules.style.top = `calc(100% - ${height})`
         specialRules.style.height = height
     }
@@ -50,7 +56,7 @@ function dynamicSpecialRuleHeight(board){
 }
 
 function addImages(board) {
-
+  console.log('ADDING IMAGES')
     const spiritImage = board.getAttribute('spirit-image');
 	const artistCredit = board.getElementsByTagName('artist-name');
     const spiritBorder = board.getAttribute('spirit-border');
@@ -90,6 +96,7 @@ function addImages(board) {
 
 function parseGrowthTags(){
     console.log("BUILDING GROWTH PANEL")
+    var debug = false;
 	var fullHTML = "";
 	const board = document.querySelectorAll('board')[0];
     var growthHTML = board.getElementsByTagName("growth");
@@ -188,7 +195,7 @@ function parseGrowthTags(){
 			
 			//Find a parenthesis and split out the string before it
 			let growthItem = classPieces[j].split("(")[0].split("^")[0];
-			console.log("Growth Option: "+classPieces[j]+", "+j)
+			if(debug){console.log("Growth Option: "+classPieces[j]+", "+j)};
 			// Check for OR
 			var regExpOuterParentheses = /\(\s*(.+)\s*\)/;
 			var regExpCommaNoParentheses = /,(?![^(]*\))/;
@@ -214,7 +221,7 @@ function parseGrowthTags(){
 				growthItem = classPieces[j].split("(")[0].split("^")[0];
 			}
 			
-			console.log('growth item= '+growthItem)
+			if(debug){console.log('growth item= '+growthItem)};
 			
 			//Find if a growth effect is repeated (Fractured Days)
 			repeatOpen = ""
@@ -311,8 +318,7 @@ function parseGrowthTags(){
 					const matches = regExpOuterParentheses.exec(classPieces[j]);
 					const gainEnergyBy = matches[1];
 					let energyOptions = matches[1].split(",");
-					console.log(energyOptions)
-                    let energyManyIconOpen = "" 
+          let energyManyIconOpen = "" 
 					let energyManyIconClose = ""
 					if (isNaN(energyOptions[0]) || energyOptions.length!=1) {
 							energyManyIconOpen = "<growth-cell-double>"
@@ -1480,6 +1486,7 @@ function setNewEnergyCardPlayTracks(energyHTML, cardPlayHTML){
 
 function dynamicCellWidth() {
 	console.log("RESIZING: Growth")
+  var debug = false;
 	const board = document.querySelectorAll('board')[0];
 	
 	// Growth Sizing
@@ -1631,9 +1638,11 @@ function dynamicCellWidth() {
 	for(i = 0; i < growthItems.length; i++){
 		if(checkOverflowWidth(growthItems[i])){
 			var children = growthItems[i].children;
-			console.log('scroll width is larger for')
-			console.log(growthItems[i])
-			console.log(children)
+      if(debug){
+        console.log('scroll width is larger for')
+        console.log(growthItems[i])
+        console.log(children)
+      }
 			var childrenWidth = 0;
 			for (var j = 0; j < children.length; j++) {
 				childrenWidth = Math.max(children[j].offsetWidth,childrenWidth)
@@ -1646,14 +1655,16 @@ function dynamicCellWidth() {
 	maxGrowthTextHeight = newGrowthTable!==undefined ? 50 : 100;
 	for(i = 0; i < growthTexts.length; i++){
 		if(growthTexts[i].offsetHeight<50){
-			console.log('balancing lines: ')
-			console.log(growthTexts[i])
-			
+			if(debug){
+        console.log('balancing lines: ')
+        console.log(growthTexts[i])
+			}
 			balanceText(growthTexts[i]);
 		}else if(growthTexts[i].offsetHeight>maxGrowthTextHeight){
-			console.log('reducing lines: ')
-			console.log(growthTexts[i])
-			
+			if(debug){
+        console.log('reducing lines: ')
+        console.log(growthTexts[i])
+			}
 			reduceLines(growthTexts[i]);
 		}
     }
@@ -1764,7 +1775,7 @@ function dynamicCellWidth() {
 		presenceNode[0].style.top = (firstRowHeight/2)+"px";
 	}
 	
-	console.log('CHECKING INNATE NOTES FOR SPACE IF NEEDED')
+	console.log('RESIZING: INNATE NOTES (IF NEEDED)')
 	// Size Innate Power box
 	growth = board.getElementsByTagName("growth")[0];
 	presenceTracks = board.getElementsByTagName("presence-tracks")[0];
@@ -1814,6 +1825,7 @@ function dynamicCellWidth() {
 }
 
 function balanceText(el){
+  var debug = false;
 	var initialHeight = el.offsetHeight
 	var currentHeight = initialHeight
 	let j = 0
@@ -1824,8 +1836,10 @@ function balanceText(el){
 		currentHeight = el.offsetHeight
 		j += 1
 		if (j>10){ 
-			console.log('Max text reduction reached for')
-			console.log(el)
+			if(debug){
+        console.log('Max text reduction reached for')
+        console.log(el)
+      }
 			break;
 		}
 	}
@@ -1879,7 +1893,7 @@ function checkOverflowHeight(el){
 
 function parseInnatePowers(){
     
-	console.log('PARSING INNATE POWERS')
+	console.log('BUILDING INNATE POWERS')
 	const board = document.querySelectorAll('board')[0];
 	
 	var fullHTML = "";
@@ -1911,7 +1925,7 @@ function parseInnatePowers(){
 }
 
 function parseInnatePower(innatePowerHTML){
-
+    var debug = false;
     var currentPowerHTML = "<innate-power class='"+innatePowerHTML.getAttribute("speed")+"'>";
     
     //Innater Power title
@@ -1966,11 +1980,10 @@ function parseInnatePower(innatePowerHTML){
 
     //Innate Power Levels and Thresholds
     var currentLevels = innatePowerHTML.getElementsByTagName("level");
-	var regExp = /\(([^)]+)\)/;
+    var regExp = /\(([^)]+)\)/;
     for (j = 0; j < currentLevels.length; j++){
         var currentThreshold = currentLevels[j].getAttribute("threshold");
 		var isText = currentLevels[j].getAttribute("text");
-		console.log(isText)
 		if(isText!=null){
 			// User wants a special text-only line
 			currentPowerHTML += "<level><level-note>";
@@ -2040,7 +2053,7 @@ function parseInnatePower(innatePowerHTML){
 }
 
 function parseSpecialRules(){
-	console.log('PARSING SPECIAL RULES')
+	console.log('BUILDING SPECIAL RULES')
 	const board = document.querySelectorAll('board')[0];
 	
 	var specialRules = board.getElementsByTagName("special-rules-container")[0];
