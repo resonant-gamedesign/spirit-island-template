@@ -52,7 +52,7 @@ special-rule icon.disease, special-rule icon.strife, special-rule icon.explorer,
 special-rule icon.badlands, special-rule icon.fear, special-rule icon.range-plus-1,
 special-rule icon.range-plus-2, special-rule icon.range-plus-3, special-rule icon.fast, 
 special-rule icon.slow, special-rule icon.minor, special-rule icon.major,
-special-rule icon.range {
+special-rule icon.range, special-rule icon.isolate {
     width:30px;
     height:30px;
 }
