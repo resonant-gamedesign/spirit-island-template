@@ -11,7 +11,7 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 - Invaders (explorer, town, city)  
 - Presence (presence, sacred-site, no-presence, no-own-presence, destroyed-presence, move-presence-1, move-presence-2, move-presence-3, move-presence-4)  
 - Island icons (blight, dahan, beasts, wilds, disease, strife, badlands)  
-- Fear icons (fear, terror1, terror2, terror3)
+- Fear icons (fear, terror-1, terror-2, terror-3)
 - Land icons (sand, mountain, jungle, wetland, ocean, jungle-wetland, jungle-sand, sand-wetland, mountain-jungle, mountain-wetland, mountain-sand)  
 - Power icons (fast, slow, minor, major, spirit, or)
 - Range icons (range, range-0, range-1, range-2, range-3, range-4, jungle-presence, sand-presence, mountain-presence, wetland-presence)
