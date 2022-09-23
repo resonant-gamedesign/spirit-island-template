@@ -1,16 +1,17 @@
+window.onload = (event) =>{
+	startMain();
+    console.log('Card Page Loaded');
+
+};
+
+
+function startMain(){
+
 var quickCards = document.querySelectorAll('quick-card');
-
-window.onload = function startMain(){
-    const cards = document.querySelectorAll('card');
-    
-	for (i = 0; i < cards.length; ++i) {
-		cards[i].innerHTML = replaceIcon(cards[i].innerHTML);
-	}
-
-}
 
 for(var quickCard of quickCards)
 {
+  console.log('randomshitnow')
   var data = getData(quickCard);
   var card = constructCard(data);
   insertAfter(card, quickCard);
@@ -18,6 +19,17 @@ for(var quickCard of quickCards)
 }
 
 setTimeout(() => {resize()}, 200);
+
+    const cards = document.querySelectorAll('card');
+    console.log(cards)
+    console.log('start main going')
+	for (i = 0; i < cards.length; ++i) {
+		cards[i].innerHTML = replaceIcon(cards[i].innerHTML);
+	}
+
+}
+
+
 
 
 
@@ -64,6 +76,7 @@ function constructCard(data)
 
 function resize()
 {
+  console.log('resize now')
 	//Name
 	nameBlocks = document.querySelectorAll("name");
 	for(let i = 0; i < nameBlocks.length; i++){
