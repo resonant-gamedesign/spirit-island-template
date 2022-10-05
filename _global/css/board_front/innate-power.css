@@ -545,12 +545,17 @@ threshold icon.badlands, threshold icon.blight, threshold icon.destroyed-presenc
 threshold icon.sacred-site {
     width: 45px;
     height: 45px;
-    margin-bottom: -9px;
+    margin-bottom: -8px;
     margin-left: 5px;
     margin-right: 5px;
 }
 
-threshold icon.destroyed-presence {
+threshold icon.wilds {
+  margin-top: -8px;
+  margin-bottom: -2px;
+}
+
+threshold icon.destroyed-presence, threshold icon.badlands {
     margin-bottom: 0px;
     margin-top: -10px;
 }
