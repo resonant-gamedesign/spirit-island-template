@@ -1,12 +1,12 @@
 window.onload = (event) =>{
 	startMain();
-    console.log('Page Loaded');
+    console.log('Adversary Page Loaded');
 
 };
 
 function startMain(){
 	quickAdversary = document.querySelectorAll('quick-adversary')[0];
-	console.log(quickAdversary)
+
 	if (quickAdversary){
 		var adversary = document.createElement('adversary');
 		adversary.innerHTML = buildAdversary(quickAdversary)
@@ -102,7 +102,7 @@ return levelHTML
 
 function dynamicSizing(el, maxSize=el.offsetHeight)
 {
-	console.log('resizing text for ' + el.tagName)
+
 	let j = 0
 	while (checkOverflow(el)){
 		var style = window.getComputedStyle(el, null).getPropertyValue('font-size');
