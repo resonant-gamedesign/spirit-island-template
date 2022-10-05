@@ -9,6 +9,11 @@
 }
 
 @font-face{
+  font-family: 'Antropos';
+  src: url(../fonts/antropos-font/AntroposFreefont-BW2G.ttf);
+}
+
+@font-face{
   font-family: 'SI-Crushed';
   src: url(../fonts/SI-Crushed/CrushedAlt04.ttf);
 }

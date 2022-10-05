@@ -8,13 +8,6 @@ innate-powers {
   margin-top: -1px;
   flex-grow: 1;
 }
-/* innate-powers::after { */
-  /* content: ''; */
-  /* background-image: url('../../images/board/Innate_Without_Text.png'); */
-  /* background-position: top; */
-  /* display: block; */
-  /* height: 9000px; */
-/* } */
 
 innate-powers section-title {
   margin-left: 25px;
@@ -107,6 +100,7 @@ info-title-range{
 }
 
 innate-info-range {
+  font-family: 'Antropos';
   width: 153px;
   padding-bottom: 4px;
   border-right: 2px solid #7f5623;
@@ -123,11 +117,13 @@ innate-info-speed, innate-info-range, innate-info-target {
 }
 
 innate-info-range, innate-info-target {
-  font-size: 34px;
-  line-height: 24px;
+  font-size: 40px;
+  line-height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-bottom: 0px;
+  height: 46px; 
 }
 
 range {
