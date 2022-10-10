@@ -57,7 +57,8 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
   - growth-group values: The Spirit Actions within a growth group, separated by semicolons (;).
 	- Example: *\<growth-group tint="green" cost="3" values="reclaim-all;gain-power-card"\>\<\/growth-group\>*
   - growth-group cost: Optional. The cost associated with this group (as seen on Keeper).
-    - non-energy costs: Optional. Try cost="1,dahan" or cost="1,custom1" or other icon names
+    - non-energy numerical costs: Optional. Try cost="1,dahan" or cost="1,custom1" or other icon names
+	- other costs: Try "forget-power-card,Cost: Forget a Power Card from Discard"
   - growth-group tint: Optional. A color shift on growth options (as seen on Spread of Rampant Green).
 		
 #### Supported growth-group values
