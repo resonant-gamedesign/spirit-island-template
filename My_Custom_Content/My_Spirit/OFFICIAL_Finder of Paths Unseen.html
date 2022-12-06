@@ -51,27 +51,10 @@
         <growth-group values="add-presence(any);gain-energy(2)"></growth-group>
     </growth>
 
-    <presence-tracks>
-	    <table id="presence-table">
-        <tr>
-          <td>energy0</td>
-          <td>sun</td>
-          <td middle>energy1+moon</td>
-          <td>energy2+water</td>
-          <td middle>move-presence(1)+air</td>
-          <td>+energy2</td>
-          <td middle>+energy1+gain-range(1;everything)</td>
-          <td>+energy1+any</td>
-        </tr>
-        <tr>
-          <td>card1</td>
-          <td>earth</td>
-          <td>gain-card-play</td>
-          <td>gain-card-play</td>
-          <td>push(town;city)</td>
-        </tr>
-	    </table>
-    </presence-tracks>
+		<presence-tracks>
+		  <energy-track banner="example2.png" banner-v-scale="50%" values="0,sun,middle(1+moon),2+water,middle(move-presence(1)+air),+2,middle(1+gain-range(1;everything)),+1+any"></energy-track>
+		  <card-play-track banner="example2.png" banner-v-scale="50%" values="1,earth,gain-card-play,gain-card-play,push(town;city)"></card-play-track>
+		</presence-tracks>
 
     <innate-powers>
       <quick-innate-power

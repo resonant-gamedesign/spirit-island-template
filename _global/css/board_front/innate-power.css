@@ -32,7 +32,7 @@ innate-power:only-child level {
 }
 
 innate-power:only-child note {
-  width: 1000px !important;
+  width: 1000px;
 }
 
 innate-power-title {
@@ -65,7 +65,7 @@ info-title {
   letter-spacing: 1.25pt;
   text-align: center;
   white-space: normal;
-  background-color: #7f5623;
+  background-color: #986839;
   box-sizing: content-box;
       border-top: 3px solid black;
     border-left: 3px solid black;
@@ -185,9 +185,20 @@ note {
   width: 487px;
   font-family: 'JosefinSans-Regular';
   font-size: 17pt;
+  letter-spacing: -0.5px;
   margin-bottom:8px;
   margin-top: -4px;
   line-height: 1;
+}
+
+note.single-squish {
+    display: block;
+    margin-bottom: 8px;
+    margin-top: -80px;
+    position: absolute;
+    text-align: left;
+    width: 556px !important;
+    margin-left: 472px;
 }
 
 note icon{
@@ -354,6 +365,32 @@ div.description {
     margin-right: 0px;
 }
 
+.description icon.range-small-icon {
+    width: 30px;
+    height: 17px;
+    margin-bottom: 0px;
+}
+
+description-container range{
+  width: 45px;
+  margin-bottom: -20px;
+  margin-top: -10px;
+  height: 30px;
+  background-position-y: 24px;
+  font-family: 'Antropos';
+  font-size: 24px;
+}
+
+level range{
+  width: 45px;
+  margin-bottom: -20px;
+  margin-top: -7px;
+  height: 30px;
+  background-position-y: 19px;
+  font-family: 'Antropos';
+  font-size: 20px;
+  vertical-align: top;
+}
 
 .element-for-each {
 	font-family: 'Gobold Extra2', 'Noto Sans';
@@ -449,8 +486,8 @@ info-target spirit {
 }
 
 innate-info icon {
-  height: 30px;
-  width: 30px;
+  height: 38px;
+  width: 38px;
   margin-bottom: 0px;
   margin-top: 0px;
 }
@@ -477,8 +514,8 @@ innate-info-range icon.mountain-presence, innate-info-range icon.mountain {
 }
 
 innate-info icon.blight, innate-info icon.no-blight {
-  height: 30px;
-  width: 30px;
+  height: 35px;
+  width: 35px;
   margin-bottom: 0px;
   margin-top: 0px;
 }

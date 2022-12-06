@@ -1,7 +1,8 @@
+@import 'board_front/global.css';
 @import 'board_front/special-rules.css';
 @import 'board_front/innate-power.css';
 @import 'board_front/icon.css';
-@import 'board_front/exception.css';
+
 
 @font-face{
   font-family: JosefinSans-Regular;
@@ -46,16 +47,23 @@ aspect{
   position:relative;
 }
 
+aspect.profile{
+  width:488px;
+  height:682px;
+  padding: 16px 15px 20px 15px;
+  background-image: url('../images/aspect-profile.png');
+}
+
 aspect.round-border{
   border-radius:22px;
 }
 
 aspect aspect-name{
   font-size:30px;
-  font-family:'DK Snemand';
+  font-family:'Name Headings';
   text-transform: uppercase;
   color:white;
-  
+  padding-bottom: 8px;
   align-items:center;
   justify-content: center;
   text-align:center;
@@ -63,7 +71,13 @@ aspect aspect-name{
 }
 
 aspect aspect-name.has-complexity, aspect aspect-subtext.has-complexity{
-  width:540px;
+  padding-right: 25%;
+  padding-left: 3.5%;
+}
+
+aspect.profile aspect-name.has-complexity, aspect.profile aspect-subtext.has-complexity{
+  padding-right: 25%;
+  padding-left: 3%;
 }
 
 aspect complexity{
@@ -74,9 +88,18 @@ aspect complexity{
   height: 76px;
   top: 32px;
   position: absolute;
-  left: 553px;
+  right: 8px;
   display: flex;
   filter: drop-shadow(2px 2px 5px);
+}
+
+aspect.profile complexity{
+  top: 26px;
+  right: -1px;
+}
+
+aspect-subtext icon{
+  filter: invert(1);
 }
 
 complexity.up{background-image: url(../images/board/NewIcons/Complexity_Up.png);}
@@ -84,40 +107,59 @@ complexity.equal{background-image: url(../images/board/NewIcons/Complexity_Equal
 complexity.down{background-image: url(../images/board/NewIcons/Complexity_Down.png);}
 
 aspect aspect-subtext{
-  padding-top:11px;
+  padding-top:7px;
+  padding-left: 21px;
+  padding-right: 21px;
   font-size:20px;
   font-family:JosefinSans-Regular;
   color:white;
+  
+    width: 106.3%;
+  margin-left: -20px;
+  margin-right: -3px;
   
   align-items:center;
   justify-content: center;
   text-align:center;
   white-space: normal;
+  
+  background-image: url(../images/aspect-subtitle.png);
+  background-size: 100% 100%;
+  background-position: top left;
+  background-repeat: no-repeat;
+  
+      min-height: 20px;
+}
+
+aspect.profile aspect-subtext{
+  width:106.7%;
+  margin-left: -15px;
+  padding-top: 3px;
 }
 
 aspect-container {
-  padding: 10px 10px 10px 10px;
+  padding: 15px 10px 10px 10px;
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-aspect-container innate-power {
+/* aspect-container innate-power {
   width: 100%;
+} */
+
+/* aspect innate-power description-container {
+  width: 100%;
+} */
+
+aspect innate-power level, aspect innate-power note, aspect innate-power description-container, aspect innate-power div.description {
+  width: 618px;
 }
 
-aspect-container innate-power description-container {
-  width: 100%;
-  height: auto;
+aspect.profile innate-power level, aspect.profile innate-power note, aspect.profile innate-power description-container, aspect.profile innate-power div.description {
+  width: 438px;
 }
 
-aspect-container innate-power level {
-  width: 100%;
-}
-
-aspect-container innate-power note {
-  width: 100%;
-}
 
 aspect-container innate-power:only-child level {
   width: 100% !important;
@@ -128,7 +170,7 @@ aspect-container innate-power:only-child note {
 }
 
 aspect-container level .description {
-  padding-top: 13px;
+  /* padding-top: 13px; */
 }
 
 aspect-back{
@@ -158,7 +200,7 @@ aspect-back img {
   top: 28px;
   width: 280px;
   font-size:30px;
-  font-family:'DK Snemand';
+  font-family:'Name Headings';
   color:white;
   text-align:center;
 }
@@ -169,7 +211,7 @@ position: absolute;
     top: 70px;
     width: 290px;
     font-size: 20px;
-    font-family: 'DK Snemand';
+    font-family: 'Name Headings';
     text-transform: uppercase;
     color: black;
     text-align: center;
@@ -186,4 +228,20 @@ position: absolute;
     background-position: center;
     margin-top: 5px;
     margin-bottom: 10px;
+}
+
+aspect innate-power {
+  scale: 0.9;
+  transform-origin: left top;
+}
+
+aspect special-rule{
+  font-size: 15.5pt;
+  line-height: 26px;
+  padding-bottom: 21px;
+}
+
+aspect special-rules-subtitle{
+  font-size: 13pt;
+  padding-top: 0px;
 }

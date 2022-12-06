@@ -29,7 +29,7 @@
       <section-title>SPECIAL RULES</section-title>
       <special-rules-subtitle>Mountain Home</special-rules-subtitle>
       <special-rule>
-        For each {fire} showing on your {presence} tracks, do 1 Damage.
+        For each {fire} showing on your {ocean}{jungle-wetland} tracks, do 1 Damage. {terror-1}
       </special-rule>
       <special-rules-subtitle>Collapse in a blast of lava and steam</special-rules-subtitle>
       <special-rule>
@@ -56,7 +56,7 @@
 			<growth-group values="isolate"></growth-group>
 		  </sub-growth>
 		  <sub-growth title="and one of:">
-			<growth-group values="isolate(2);gain-energy(text,spiky vine you have,custom1);forget-power-card"></growth-group>
+			<growth-group values="isolate(2);gain-energy(text,spiky vine you have,custom1);damage-2"></growth-group>
 			<growth-group values="custom([custom]Destroy 1 {explorer} or add 1 {wilds} in 1 of Your Lands,custom1)"></growth-group>
 			<growth-group values="gain-card-play(3)^2;damage(2,2);make-fast^3"></growth-group>
 		  </sub-growth>
@@ -84,7 +84,7 @@
           1 Damage per {fire,2} you have.
         </level>
         <level threshold="3-plant">
-          Instead, 1 Damage per {fire} you have.
+          Instead, 1 Damage per {fire} you have.{terror-1}
         </level>
         <level threshold="4-fire,2-air">
           You may split this Power's damage among any number of lands with {blight} where you have {presence}.

@@ -1,0 +1,42 @@
+<head>
+    <link href="../../_global/css/global.css" rel="stylesheet">
+    <link href="../../_global/css/board_front.css" rel="stylesheet">
+        <script type="text/javascript" src="../../_global/js/general.js"></script>
+    <script type="text/javascript" src="../../_global/js/board_front.js"></script>
+<style></style></head>
+
+<body>
+
+  <board spirit-image="example1.png" spirit-image-scale="190%" spirit-border="example2.png">
+    
+    <spirit-name>Hearth Vigil</spirit-name>
+	<artist-name></artist-name>
+	
+    <special-rules-container><section-title>SPECIAL RULES</section-title><special-rules-subtitle>Rooted in the community</special-rules-subtitle><special-rule>{blight} Added in your lands does not Destroy your {presence} if {dahan} are present. <em>(Ravage Actions Destroy {dahan} before {blight} Destroys {presence} and cascades.)</em></special-rule><special-rules-subtitle>Fortify Heart and Hearth</special-rules-subtitle><special-rule>While in your lands, {dahan} have +4 Health (each) and can't be Damaged, Destroyed, or Replaced by Event and Blight Card Actions. <em>(Ravages are not Event Actions even if caused by Events).</em></special-rule><special-rules-subtitle>Loyal Guardian</special-rules-subtitle><special-rule>When all {dahan} leave one of your lands, your {presence} may move with those {dahan}. <em>(Each {dahan} can Bring any number of {presence}.)</em></special-rule></special-rules-container>
+
+    <right>
+		<!-- GROWTH  
+			Examples include: reclaim-all; reclaim-one; move-presence(1); gain-energy(2);
+			Gaining Elements: gain-element(water,fire); gain-element(water,2);
+			Adding Presence: add-presence(1); add-presence(1,jungle); add-presence(2,town,city,blight,or); add-presence(2,strife,city,and);
+			
+			Sub-Groups of Growth are possible (think Lure)
+			Example: <sub-growth title="pick one of:" bordered>   here 'bordered' creates the double line border
+					 </sub-growth>
+		-->
+		<growth title="Growth (Pick One)"><growth-group values="reclaim-all;add-presence(0)"></growth-group><growth-group values="gain-power-card;add-presence(3,dahan);gain-energy(1)"></growth-group><growth-group values="add-presence(2);gain-energy(4)"></growth-group></growth>
+
+		<presence-tracks><energy-track banner="" banner-v-scale="50%" values="middle(gather(dahan)),0,1+sun,2,3+animal,4,5+sun"></energy-track><card-play-track banner="" banner-v-scale="50%" values="1,2,air,3,animal,4"></card-play-track></presence-tracks>
+
+		<!-- INNATE POWERS  
+			To create powers which scale with elements ("For Each"), use the shortcut {fire,2} to include the numeral
+			Tokens can be included in level thresholds (as seen on Many Minds). Try '1-dahan','2-beast','3-wilds',etc.
+			speed: "fast" or "slow"
+		-->
+    <innate-powers><quick-innate-power name="Warn of Impending Conflict" speed="fast" range="none" target="yourself" target-title="Target"><level threshold="2-sun,1-earth">1 {dahan} in one of your lands does Damage before Invaders during Ravages. <em>(Choose a land when Invaders Ravage there.)</em></level><level threshold="3-sun,1-earth">Instead, 2 {dahan} in one of your lands does Damage before Invaders during Ravages.</level><level threshold="4-sun,2-earth">Instead, all {dahan} in one of your lands does Damage before Invaders during Ravages.</level><level threshold="5-sun,3-earth">Instead, all {dahan} in all of your lands does Damage before Invaders during Ravages.</level></quick-innate-power><quick-innate-power name="keep watch for new incursions" speed="fast" range="sacred-site,dahan,1" target="any" target-title="TARGET LAND"><level threshold="1-animal">Gather up to 2 {dahan}, from your lands only.</level><level threshold="1-sun,2-air,3-animal">Once this turn after Invaders are added or moved into target land, 1 Damage per {dahan} in target land, to those added/moved Invaders only.</level><level threshold="2-sun,3-air,4-animal">Repeat this Power.</level></quick-innate-power></innate-powers>
+  </right>
+  </board>
+
+
+
+</body>

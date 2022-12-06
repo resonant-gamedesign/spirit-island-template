@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<head>
+    <link href="../../_global/css/global.css" rel="stylesheet" />
+    <link href="../../_global/css/board_front.css" rel="stylesheet" />
+    <script type="text/javascript" src="../../_global/js/general.js"></script>
+    <script type="text/javascript" src="../../_global/js/board_front.js"></script>
+	
+	<!-- Custom Icons. Instructions 1) place image in same folder as HTLM 2) replace demo file name with your file name below 3) used custom1, custom2, or custom3 in your HTLM to reference -->
+	<style>
+	icon.custom1{background-image: url('demo_custom_icon.png'); }
+	icon.custom2{background-image: url('filename.png'); }
+	icon.custom3{background-image: url('filename.png'); }
+	</style>
+</head>
+
+<body>
+
+  <board spirit-image="example1.png" spirit-image-scale="190%"  spirit-border="example2.png">
+    
+    <spirit-name>
+      Examples: Other
+    </spirit-name>
+	<artist-name>
+	
+	</artist-name>
+	
+    <special-rules-container>
+      <section-title>SPECIAL RULES</section-title>
+      <special-rules-subtitle>Ice Slowly Consumes the Land</special-rules-subtitle>
+      <special-rule>
+        Your {sacred-site} count as {badlands}. 
+		All {badlands} in your lands increase defend by 1. If you have 2 or more {badlands} in a land, skip the first build action in that land each turn.
+      </special-rule>
+      <special-rules-subtitle>Spirit of the Freezing Cold</special-rules-subtitle>
+      <special-rule>
+        Your Unique Powers, Growth options, and {presence} track can give you {star} elements. {star} elements work the same as all other elements except you may optionally make a snow element count as {air} or {water} instead for the rest of the turn. Your powers that deal damage also deal damage to {dahan}.
+      </special-rule>
+    </special-rules-container>
+
+    <right>
+		<!-- GROWTH  
+			Examples include: reclaim-all; reclaim-one; move-{presence}(1); gain-energy(2);
+			Gaining Elements: gain-element(water,fire); gain-element(water,2);
+			Adding {presence}: add-{presence}(1); add-{presence}(1,jungle); add-{presence}(2,town,city,blight,or); add-{presence}(2,strife,city,and);
+			
+			Sub-Groups of Growth are possible (think Lure)
+			Example: <sub-growth title="pick one of:" bordered>   here 'bordered' creates the double line border
+					 </sub-growth>
+		-->
+		<growth title="Growth (Pick One)">
+			<growth-group values="reclaim(all);add-presence(0)"></growth-group>
+			<growth-group values="reclaim(one);add-presence(2);custom(Gain 2 Snow,star)"></growth-group>
+			<growth-group values="gain-power-card;add-presence(1)"></growth-group>
+			<growth-group values="add-presence(2);gain-energy(2)"></growth-group>
+		</growth>
+
+		<presence-tracks>
+		  <energy-track values="2,star,3,star,4+star,5+star"></energy-track>
+		  <card-play-track values="1,2,water,2,3,air,4"></card-play-track>
+		</presence-tracks>
+
+		<!-- INNATE POWERS  
+			To create powers which scale with elements ("For Each"), use the shortcut {fire,2} to include the numeral
+			Tokens can be included in level thresholds (as seen on Many Minds). Try '1-{dahan}','2-beast','3-wilds',etc.
+			speed: "fast" or "slow"
+		-->
+    <innate-powers>
+      <quick-innate-power
+        name="Coat the land in ice"
+        speed="slow"
+        range="badlands,1"
+        target="any"
+        target-title="TARGET LAND"
+        >
+        <level threshold="2-moon">
+          This power instead originates from any land with your {presence}. 1 {fear} if originating from a land with {badlands}.
+        </level>
+        <level threshold="3-star">
+          Add 1 {badlands}.
+        </level>
+        <level threshold="4-star">
+          1 damage.
+        </level>
+		<level threshold="7-star">
+          Repeat this power.
+        </level>
+      </quick-innate-power>
+      <quick-innate-power
+      name="Protect the land with encompassing snow"
+      speed="fast"
+      range="none"
+      target="yourself"
+      target-title="TARGET">
+      <level threshold="3-water">
+          Defend 1 in every land for each of your {presence} in that land.
+        </level>
+        <level threshold="4-air">
+          Defend 1 in every land per {badlands} in the adjacent lands. If you also have 3 water, you may defend 1 per {presence} you have in an adjacent land.
+        </level>
+        <level threshold="6-air,4-water">
+          Defend 1 in each of your lands per snow element.
+        </level>
+      </quick-innate-power>
+    </innate-powers>
+  </right>
+  </board>
+</body>
+
+</html>

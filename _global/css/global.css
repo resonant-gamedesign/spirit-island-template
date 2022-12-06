@@ -26,8 +26,8 @@
 @font-face{
   font-family: "Name Headings";
   src: url(../fonts/DKSnemand/DK-Snemand.otf),
-	   url(../fonts/Mouse_Memoirs/MouseMemoirs-Regular.ttf),
-	   local('DK Snemand');
+	   local('DK Snemand Regular'),
+     url(../fonts/Mouse_Memoirs/MouseMemoirs-Regular.ttf);
 }
 
 @font-face{
@@ -68,6 +68,7 @@ icon.no::before {
   width: 100%;
   height: 100%;
   margin: auto;
+  opacity: 0.8;
 }
 
 icon.range{background-image: url('../images/50px-Rangeicon.png');}
@@ -148,8 +149,8 @@ icon.damage-1 { background-image: url('../images/board/NewIcons/Damage 1.png'); 
 icon.damage-2 { background-image: url('../images/board/NewIcons/Damage 2.png'); }
 
 icon.terror-1{background-image: url('../images/board/NewIcons/TerrorLevel1.png'); width:50px; padding: 5px; margin-bottom: -8px; }
-icon.terror-2{background-image: url('../images/board/NewIcons/TerrorLevel1.png'); width:50px; padding: 5px; margin-bottom: -8px; }
-icon.terror-3{background-image: url('../images/board/NewIcons/TerrorLevel1.png'); width:50px; padding: 5px; margin-bottom: -8px; }
+icon.terror-2{background-image: url('../images/board/NewIcons/TerrorLevel2.png'); width:50px; padding: 5px; margin-bottom: -8px; }
+icon.terror-3{background-image: url('../images/board/NewIcons/TerrorLevel3.png'); width:50px; padding: 5px; margin-bottom: -8px; }
 
 icon.range-0 { background-image: url('../images/board/presence_range_0.png'); }
 icon.range-1 { background-image: url('../images/board/presence_range_1.png'); }
@@ -161,6 +162,7 @@ icon.gain-range-1 { background-image: url('../images/board/NewIcons/Range Gain 1
 icon.gain-range-2 { background-image: url('../images/board/NewIcons/Range Gain 2.png'); }
 icon.gain-range-3 { background-image: url('../images/board/NewIcons/Range Gain 3.png'); }
 icon.gain-range-X, icon.gain-range-x { background-image: url('../images/board/NewIcons/Range Gain X.png'); }
+icon.move-arrow { background-image: url('../images/board/move_arrow.png'); }
 
 icon.isolate {background-image: url('../images/board/NewIcons/Isolate.png');}
 icon.minor {background-image: url('../images/board/NewIcons/Misc Minor.png');}
@@ -195,6 +197,21 @@ icon.gather {background-image: url('../images/board/NewIcons/Land Gather.png');}
 icon.gather-into {background-image: url('../images/board/NewIcons/Land Gather Into.png');}
 icon.your-land {background-image: url('../images/board/NewIcons/Land.png');}
 
+icon.empower-incarna {background-image: url('../images/board/NewIcons/empower-incarna.png');}
+icon.incarna-ember {background-image: url('../images/board/NewIcons/incarna-ember.png');}
+icon.incarna-breath {background-image: url('../images/board/NewIcons/incarna-breath.png');}
+
+icon.double-gain {
+  background-image: url('../images/board/EnergyBlank.png');
+}
+icon.double-gain::after{
+  content:"";
+  background-image: url('../images/board/EnergyBlank.png');
+  width:10px;
+  height:10px;
+}
+  
+
 range{
   width:50px;
   height:32px;
@@ -213,4 +230,9 @@ no-range{
   background-image:url('../images/no-range.png');
   background-repeat: no-repeat;
   background-size:88px 4px;
+}
+
+#single-line {
+    padding-top: 12px;
+    padding-bottom: 4px;
 }

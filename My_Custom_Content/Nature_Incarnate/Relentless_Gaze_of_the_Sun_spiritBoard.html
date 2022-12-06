@@ -1,0 +1,45 @@
+<head>
+    <link href="../../_global/css/global.css" rel="stylesheet">
+    <link href="../../_global/css/board_front.css" rel="stylesheet">
+<style></style></head>
+
+<body>
+
+  <board spirit-image="example1.png" spirit-image-scale="190%" spirit-border="example2.png">
+    
+    <spirit-name>Relentless Gaze of the Sun</spirit-name>
+	<artist-name></artist-name>
+	
+    <special-rules-container><section-title>SPECIAL RULES</section-title><special-rules-subtitle>Relentless Punishment</special-rules-subtitle><special-rule>After using a Power Card, if you had at least 3 {presence} in the origin land, you may Repeat it any number of times on the same target land(s) <em>(ignoring origin, Range, and target requirements)</em> by paying both:
+the Energy cost of the Power, and
+1 Energy per previous use of the Power this turn
+each time you Repeat the Power.
+
+<em>(You may Repeat each Power Card multiple times, but its 1st Repeat costs 1 extra, its 2nd Repeat costs 2 extra, etc. Check if the origin has at least 3 {presence} when you target the Power the first time.)</em></special-rule></special-rules-container>
+
+    <right>
+		<!-- GROWTH  
+			Examples include: reclaim-all; reclaim-one; move-presence(1); gain-energy(2);
+			Gaining Elements: gain-element(water,fire); gain-element(water,2);
+			Adding Presence: add-presence(1); add-presence(1,jungle); add-presence(2,town,city,blight,or); add-presence(2,strife,city,and);
+			
+			Sub-Groups of Growth are possible (think Lure)
+			Example: <sub-growth title="pick one of:" bordered>   here 'bordered' creates the double line border
+					 </sub-growth>
+		-->
+		<growth title="Growth"><sub-growth title="Always..." bordered=""><growth-group tint="red" values="add-presence(2)"></growth-group></sub-growth><sub-growth title="Plus pick one:"><growth-group values="reclaim(all);add-token(1,destroyed-presence,3,and)"></growth-group><growth-group values="gain-power-card"></growth-group><growth-group values="gain-energy(1);move-presence(3,3)"></growth-group></sub-growth></growth>
+
+		<presence-tracks><energy-track banner="example2.png" banner-v-scale="50%" values="1,2+sun,3+fire,sun,4+any,5"></energy-track><card-play-track banner="example2.png" banner-v-scale="50%" values="1,1,2,sun,3,reclaim-one,4"></card-play-track></presence-tracks>
+
+		<!-- INNATE POWERS  
+			To create powers which scale with elements ("For Each"), use the shortcut {fire,2} to include the numeral
+			Tokens can be included in level thresholds (as seen on Many Minds). Try '1-dahan','2-beast','3-wilds',etc.
+			speed: "fast" or "slow"
+		-->
+    <innate-powers><quick-innate-power name="Scorching Convergence" speed="slow" range="sacred-site,1" target="any" target-title="TARGET LAND"><level threshold="2-sun">Move all of your {presence} from origin land directly to target land. 1 Damage, to {town}/{city} only.</level><level threshold="3-sun,1-fire">3 Damage to Invaders. 3 Damage to {dahan}. Add 1 {blight} without cascading.</level><level threshold="4-sun,2-fire,1-air">3 {fear} if this Power Destroyed any Invaders.</level><level threshold="5-sun,3-fire,2-air">1 Damage per remaining {presence} of yours in target land.</level></quick-innate-power><quick-innate-power name="Consider a harmonious nature" speed="fast" range="none" target="yourself" target-title="Target"><level threshold="3-sun,1-moon">When your Powers would add {blight}, you may Destroy 1 {presence} instead (there or elsewhere).</level><level threshold="3-sun,1-water">Your Powers don't Damage or Destroy {dahan}.</level><level threshold="3-sun,1-plant">Choose another Spirit. They add 1 {destroyed-presence} to one of your lands.</level><level threshold="3-sun,1-water,1-plant">Give up to 3 of your Energy to the chosen Spirit.</level></quick-innate-power></innate-powers>
+  </right>
+  </board>
+
+
+
+</body>
