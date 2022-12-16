@@ -180,6 +180,19 @@ aspect-back{
   position:relative;
 }
 
+aspect-overlay{
+  width: 682px;
+  height: 488px;
+  display: flex;
+  position:relative;
+  
+  
+  background-image: url('../images/aspect-back.png');
+  background-size: cover;
+  background-position: top left;
+  background-repeat: no-repeat;
+}
+
 aspect-back .overlay {
   content:url('../../_global/images/aspect-back.png');
   border-radius:22px;
@@ -230,10 +243,20 @@ position: absolute;
     margin-bottom: 10px;
 }
 
+
 aspect innate-power {
   scale: 0.9;
   transform-origin: left top;
 }
+
+aspect innate-power-title {
+  font-size: 15pt;
+}
+
+/* aspect innate-power info-container, aspect innate-power description-container{
+  scale: 0.9;
+  transform-origin: left top;
+} */
 
 aspect special-rule{
   font-size: 15.5pt;
