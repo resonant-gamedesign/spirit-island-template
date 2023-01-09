@@ -9,6 +9,11 @@
 }
 
 @font-face{
+  font-family: 'Gobold Extra2web';
+  src: url(../fonts/Gobold-Extra2/Gobold-Extra2.otf);
+}
+
+@font-face{
   font-family: 'Antropos';
   src: url(../fonts/antropos-font/AntroposFreefont-BW2G.ttf);
 }
@@ -72,7 +77,7 @@ icon.no::before {
 }
 
 icon.range{background-image: url('../images/50px-Rangeicon.png');}
-icon.range-growth{background-image: url('../images/board/range_arrow')}
+icon.range-growth{background-image: url('../images/board/range_arrow.png')}
 icon.spirit{background-image: url('../images/50px-Spiriticon.png'); }
 icon.player{background-image: url('../images/50px-Spiriticon.png'); }
 icon.player-spirit{background-image: url('../images/50px-Spiriticon.png'); }
